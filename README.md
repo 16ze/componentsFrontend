@@ -2,6 +2,54 @@
 
 Voici la structure complète du projet avec tous les composants organisés par fonctionnalité. Cette structure suit les conventions de Next.js App Router et les meilleures pratiques d'organisation de code.
 
+## Système de Scoring des Leads
+
+Le module de scoring des leads permet une évaluation sophistiquée des leads basée sur de multiples critères avec les fonctionnalités suivantes :
+
+### Fonctionnalités principales
+
+1. **Configuration des règles de scoring**
+
+   - Création et gestion de règles avec pondération par critère
+   - Critères démographiques (industrie, taille, localisation) et comportementaux (visites, téléchargements)
+   - Seuils configurables pour qualification automatique (froid, tiède, chaud, qualifié)
+
+2. **Modèles prédéfinis**
+
+   - Modèles de scoring par secteur d'activité
+   - Possibilité de dupliquer et personnaliser les modèles existants
+
+3. **Tableau de bord d'analyse**
+
+   - Visualisation de la distribution des scores
+   - Analyse de l'efficacité du scoring
+   - Évolution temporelle des scores
+   - Comparaison des scores entre leads et moyennes par segment
+
+4. **Tests A/B**
+
+   - Création et gestion de tests A/B sur les modèles de scoring
+   - Comparaison des taux de conversion entre différents modèles
+   - Visualisation de l'évolution des performances
+
+5. **Machine Learning**
+   - Optimisation automatique des pondérations des critères
+   - Prédiction des taux de conversion
+   - Suggestions d'amélioration basées sur l'analyse des données
+
+### Architecture
+
+Le système de scoring utilise :
+
+- Un store Zustand pour la gestion de l'état global
+- Des types TypeScript bien définis pour garantir la robustesse
+- Des visualisations basées sur Victory pour les graphiques
+- Une architecture modulaire et réutilisable
+
+### Décroissance temporelle
+
+Le système prend en charge la décroissance temporelle des scores pour l'inactivité, permettant une évaluation plus précise de l'engagement actuel des leads.
+
 ```
 📁 modern-nextjs-components/
   📁 app/

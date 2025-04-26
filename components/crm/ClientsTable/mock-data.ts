@@ -1,0 +1,311 @@
+import { Client, ClientStatus, ClientSource } from "./types";
+
+// Génération de données fictives pour le tableau
+export const MOCK_CLIENTS: Client[] = [
+  {
+    id: "client-001",
+    name: "Tech Solutions Inc.",
+    company: "Tech Solutions",
+    contacts: [
+      {
+        id: "contact-001",
+        name: "Jean Dupont",
+        email: "jean.dupont@techsolutions.fr",
+        phone: "06 12 34 56 78",
+        position: "Directeur Technique",
+        type: "primary",
+      },
+      {
+        id: "contact-002",
+        name: "Marie Lambert",
+        email: "marie.lambert@techsolutions.fr",
+        phone: "06 98 76 54 32",
+        position: "Responsable Achats",
+        type: "secondary",
+      },
+    ],
+    status: "client",
+    value: 75000,
+    source: "website",
+    tags: ["tech", "enterprise", "software"],
+    assignedTo: "user-001",
+    lastActivity: new Date("2023-10-15"),
+    createdAt: new Date("2023-01-10"),
+    notes: "Client fidèle depuis janvier 2023.",
+  },
+  {
+    id: "client-002",
+    name: "Marketing Pro",
+    company: "Marketing Professionals",
+    contacts: [
+      {
+        id: "contact-003",
+        name: "Sophie Martin",
+        email: "sophie.martin@marketingpro.fr",
+        phone: "07 11 22 33 44",
+        position: "CEO",
+        type: "primary",
+      },
+    ],
+    status: "prospect",
+    value: 15000,
+    source: "referral",
+    tags: ["marketing", "startup"],
+    assignedTo: "user-002",
+    lastActivity: new Date("2023-10-20"),
+    createdAt: new Date("2023-09-05"),
+    notes: "Intéressé par notre offre premium.",
+  },
+  {
+    id: "client-003",
+    name: "Café du Centre",
+    company: "Café du Centre SARL",
+    contacts: [
+      {
+        id: "contact-004",
+        name: "Pierre Lefebvre",
+        email: "pierre@cafeducentre.fr",
+        phone: "06 55 44 33 22",
+        position: "Propriétaire",
+        type: "primary",
+      },
+    ],
+    status: "lead",
+    value: 5000,
+    source: "cold-call",
+    tags: ["restaurant", "small-business"],
+    assignedTo: "user-003",
+    lastActivity: new Date("2023-10-18"),
+    createdAt: new Date("2023-10-01"),
+    notes: "Nouveau lead, première réunion prévue la semaine prochaine.",
+  },
+  {
+    id: "client-004",
+    name: "Constructions Modernes",
+    company: "Constructions Modernes SA",
+    contacts: [
+      {
+        id: "contact-005",
+        name: "Claude Dubois",
+        email: "claude@constructionsmodernes.fr",
+        phone: "07 66 77 88 99",
+        position: "Directeur Commercial",
+        type: "primary",
+      },
+      {
+        id: "contact-006",
+        name: "Julien Petit",
+        email: "julien@constructionsmodernes.fr",
+        phone: "07 55 66 77 88",
+        position: "Chef de Projet",
+        type: "secondary",
+      },
+    ],
+    status: "client",
+    value: 120000,
+    source: "event",
+    tags: ["construction", "enterprise"],
+    assignedTo: "user-001",
+    lastActivity: new Date("2023-10-12"),
+    createdAt: new Date("2022-06-15"),
+    notes: "Client important - renouvellement de contrat prévu en décembre.",
+  },
+  {
+    id: "client-005",
+    name: "Électro Plus",
+    company: "Électro Plus EURL",
+    contacts: [
+      {
+        id: "contact-007",
+        name: "Émilie Rousseau",
+        email: "emilie@electroplus.fr",
+        phone: "06 33 44 55 66",
+        position: "Gérante",
+        type: "primary",
+      },
+    ],
+    status: "inactive",
+    value: 30000,
+    source: "partner",
+    tags: ["retail", "electronics"],
+    assignedTo: "user-002",
+    lastActivity: new Date("2023-08-30"),
+    createdAt: new Date("2022-11-20"),
+    notes: "Activité réduite récemment.",
+  },
+  // Ajout de plus de clients fictifs pour la pagination
+  {
+    id: "client-006",
+    name: "Optique Vision",
+    company: "Optique Vision SARL",
+    contacts: [
+      {
+        id: "contact-008",
+        name: "Thomas Bernard",
+        email: "thomas@optiquevision.fr",
+        phone: "07 22 33 44 55",
+        position: "Directeur",
+        type: "primary",
+      },
+    ],
+    status: "client",
+    value: 45000,
+    source: "website",
+    tags: ["retail", "healthcare"],
+    assignedTo: "user-003",
+    lastActivity: new Date("2023-10-05"),
+    createdAt: new Date("2023-02-28"),
+    notes: "Commande régulière tous les trimestres.",
+  },
+  {
+    id: "client-007",
+    name: "Jardin Vert",
+    company: "Jardin Vert SAS",
+    contacts: [
+      {
+        id: "contact-009",
+        name: "Alice Moreau",
+        email: "alice@jardinvert.fr",
+        phone: "06 11 33 55 77",
+        position: "Responsable Marketing",
+        type: "primary",
+      },
+    ],
+    status: "prospect",
+    value: 20000,
+    source: "referral",
+    tags: ["garden", "retail"],
+    assignedTo: "user-001",
+    lastActivity: new Date("2023-10-25"),
+    createdAt: new Date("2023-09-15"),
+    notes: "Rendez-vous de suivi prévu le mois prochain.",
+  },
+  {
+    id: "client-008",
+    name: "Auto Premium",
+    company: "Auto Premium SAS",
+    contacts: [
+      {
+        id: "contact-010",
+        name: "Marc Durand",
+        email: "marc@autopremium.fr",
+        phone: "07 88 99 00 11",
+        position: "Gérant",
+        type: "primary",
+      },
+      {
+        id: "contact-011",
+        name: "Lucie Girard",
+        email: "lucie@autopremium.fr",
+        phone: "07 88 77 66 55",
+        position: "Assistante de Direction",
+        type: "secondary",
+      },
+    ],
+    status: "lead",
+    value: 85000,
+    source: "event",
+    tags: ["automotive", "luxury"],
+    assignedTo: "user-002",
+    lastActivity: new Date("2023-10-22"),
+    createdAt: new Date("2023-10-10"),
+    notes: "Lead prometteur suite au salon de l'automobile.",
+  },
+  {
+    id: "client-009",
+    name: "Formation Pro",
+    company: "Formation Pro SARL",
+    contacts: [
+      {
+        id: "contact-012",
+        name: "Stéphane Roux",
+        email: "stephane@formationpro.fr",
+        phone: "06 44 55 66 77",
+        position: "Directeur Pédagogique",
+        type: "primary",
+      },
+    ],
+    status: "client",
+    value: 35000,
+    source: "website",
+    tags: ["education", "services"],
+    assignedTo: "user-003",
+    lastActivity: new Date("2023-10-17"),
+    createdAt: new Date("2023-03-12"),
+    notes: "Client satisfait, potentiel d'expansion.",
+  },
+  {
+    id: "client-010",
+    name: "Santé Plus",
+    company: "Santé Plus Clinique",
+    contacts: [
+      {
+        id: "contact-013",
+        name: "Aurélie Blanc",
+        email: "aurelie@santeplus.fr",
+        phone: "07 12 13 14 15",
+        position: "Directrice Administrative",
+        type: "primary",
+      },
+    ],
+    status: "archived",
+    value: 100000,
+    source: "partner",
+    tags: ["healthcare", "enterprise"],
+    assignedTo: "user-001",
+    lastActivity: new Date("2023-06-20"),
+    createdAt: new Date("2022-01-05"),
+    notes: "Ancien client majeur, projet terminé.",
+  },
+];
+
+// Statuts pour les filtres
+export const CLIENT_STATUSES: { value: ClientStatus; label: string }[] = [
+  { value: "lead", label: "Lead" },
+  { value: "prospect", label: "Prospect" },
+  { value: "client", label: "Client" },
+  { value: "inactive", label: "Inactif" },
+  { value: "archived", label: "Archivé" },
+];
+
+// Sources pour les filtres
+export const CLIENT_SOURCES: { value: ClientSource; label: string }[] = [
+  { value: "website", label: "Site Web" },
+  { value: "referral", label: "Parrainage" },
+  { value: "cold-call", label: "Démarchage" },
+  { value: "event", label: "Événement" },
+  { value: "partner", label: "Partenaire" },
+  { value: "other", label: "Autre" },
+];
+
+// Assignés pour les filtres
+export const ASSIGNED_USERS = [
+  { id: "user-001", name: "Alexandre Martin" },
+  { id: "user-002", name: "Camille Dubois" },
+  { id: "user-003", name: "Maxime Leroy" },
+];
+
+// Configuration des colonnes par défaut
+export const DEFAULT_COLUMNS: {
+  id: string;
+  label: string;
+  visible: boolean;
+  sortable: boolean;
+}[] = [
+  { id: "name", label: "Nom", visible: true, sortable: true },
+  { id: "company", label: "Entreprise", visible: true, sortable: true },
+  { id: "contactEmail", label: "Email", visible: true, sortable: true },
+  { id: "contactPhone", label: "Téléphone", visible: true, sortable: false },
+  { id: "status", label: "Statut", visible: true, sortable: true },
+  { id: "value", label: "Valeur", visible: true, sortable: true },
+  {
+    id: "lastActivity",
+    label: "Dernière Activité",
+    visible: true,
+    sortable: true,
+  },
+  { id: "source", label: "Source", visible: false, sortable: true },
+  { id: "assignedTo", label: "Assigné à", visible: false, sortable: true },
+  { id: "createdAt", label: "Date d'ajout", visible: false, sortable: true },
+  { id: "tags", label: "Tags", visible: false, sortable: false },
+];
