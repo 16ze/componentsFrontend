@@ -1,0 +1,25 @@
+/* Styles spécifiques pour la galerie mode "spotlight" */
+
+.spotlight-gallery > div:nth-child(6n + 1),
+.spotlight-gallery > div:nth-child(6n + 6) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Ajustements responsives */
+@media (max-width: 768px) {
+  .spotlight-gallery > div {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
+
+/* Animation de survol pour les éléments de galerie */
+.group:hover .group-hover\:opacity-100 {
+  transition-delay: 100ms;
+}
+
+/* Animation de zoom pour la modal d'image */
+.dialog-content {
+  will-change: transform;
+}
