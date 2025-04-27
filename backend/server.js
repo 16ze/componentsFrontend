@@ -5,6 +5,8 @@ const helmet = require("helmet");
 const compression = require("compression");
 const mongoose = require("mongoose");
 const rateLimit = require("express-rate-limit");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
 const { errorHandler } = require("./middleware/errorHandler");
 const logger = require("./utils/logger");
 
@@ -33,6 +35,13 @@ const apiLimiter = rateLimit({
 });
 app.use("/api", apiLimiter);
 
+// Documentation API Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.get("/api-docs.json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
+
 // Routes
 app.use("/api/booking", bookingRoutes);
 app.use("/api/contact", contactRoutes);
@@ -52,6 +61,9 @@ mongoose
     logger.info("Connected to MongoDB");
     app.listen(PORT, () => {
       logger.info(`Server running on port ${PORT}`);
+      logger.info(
+        `API Documentation available at http://localhost:${PORT}/api-docs`
+      );
     });
   })
   .catch((err) => {

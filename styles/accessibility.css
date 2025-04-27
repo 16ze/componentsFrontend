@@ -1,0 +1,165 @@
+/* ============ Accessibilité: Styles de base ============ */
+:root {
+  --text-size-factor: 1;
+  --focus-ring-color: #2563eb;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+}
+
+html {
+  font-size: calc(16px * var(--text-size-factor));
+}
+
+/* ============ Gestion du focus ============ */
+*:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 2px;
+}
+
+/* ============ Mode contraste élevé ============ */
+.high-contrast {
+  --background-color: #000;
+  --text-color: #fff;
+  --link-color: #ffff00;
+  --border-color: #fff;
+  --focus-ring-color: #ffff00;
+
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+}
+
+.high-contrast a {
+  color: var(--link-color) !important;
+  text-decoration: underline !important;
+}
+
+.high-contrast button,
+.high-contrast input,
+.high-contrast select,
+.high-contrast textarea {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+.high-contrast img {
+  filter: grayscale(100%) contrast(120%);
+}
+
+.high-contrast button:hover,
+.high-contrast a:hover {
+  background-color: #333 !important;
+  text-decoration: underline !important;
+}
+
+/* ============ Mode simplifié ============ */
+.simplified-mode {
+  --line-height: 1.7;
+  --spacing-factor: 1.5;
+
+  line-height: var(--line-height) !important;
+}
+
+.simplified-mode h1,
+.simplified-mode h2,
+.simplified-mode h3,
+.simplified-mode h4,
+.simplified-mode h5,
+.simplified-mode h6,
+.simplified-mode p,
+.simplified-mode ul,
+.simplified-mode ol {
+  margin-top: calc(1rem * var(--spacing-factor)) !important;
+  margin-bottom: calc(1rem * var(--spacing-factor)) !important;
+}
+
+.simplified-mode .complex-ui {
+  display: none !important;
+}
+
+.simplified-mode .simplified-ui {
+  display: block !important;
+}
+
+/* ============ Mouvements réduits ============ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Quand activé explicitement par l'utilisateur */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ============ Support RTL ============ */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .ltr-specific {
+  display: none;
+}
+
+[dir="ltr"] .rtl-specific {
+  display: none;
+}
+
+/* Marges et paddings adaptés pour RTL */
+[dir="rtl"] .margin-start {
+  margin-right: var(--margin-value);
+  margin-left: 0;
+}
+
+[dir="rtl"] .margin-end {
+  margin-left: var(--margin-value);
+  margin-right: 0;
+}
+
+[dir="rtl"] .padding-start {
+  padding-right: var(--padding-value);
+  padding-left: 0;
+}
+
+[dir="rtl"] .padding-end {
+  padding-left: var(--padding-value);
+  padding-right: 0;
+}
+
+/* ============ Accessibilité du clavier ============ */
+[data-keyboard-focus="true"] *:focus {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color) !important;
+  outline-offset: var(--focus-ring-offset) !important;
+}
+
+/* ============ Accessibilité mobile ============ */
+@media (max-width: 768px) {
+  button,
+  a,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Augmenter l'espacement pour une meilleure accessibilité tactile */
+  ul li,
+  ol li,
+  nav a {
+    margin-bottom: 12px;
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "react-native-offline-manager",
+  "version": "1.0.0",
+  "description": "Gestionnaire de mode hors ligne pour applications React Native",
+  "main": "OfflineManager.tsx",
+  "dependencies": {
+    "@react-native-community/netinfo": "^9.3.0",
+    "@react-native-async-storage/async-storage": "^1.17.11",
+    "react": "^18.0.0",
+    "react-native": "^0.70.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0"
+  },
+  "keywords": [
+    "react-native",
+    "offline",
+    "connectivity",
+    "cache",
+    "sync"
+  ],
+  "author": "Votre nom",
+  "license": "MIT"
+}

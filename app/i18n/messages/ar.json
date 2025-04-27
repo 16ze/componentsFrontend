@@ -1,0 +1,118 @@
+{
+  "common": {
+    "welcome": "مرحباً",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "close": "إغلاق",
+    "search": "بحث",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "submit": "إرسال",
+    "required": "حقل مطلوب",
+    "success": "تمت العملية بنجاح"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "shop": "المتجر",
+    "gallery": "معرض الصور",
+    "contact": "اتصل بنا",
+    "booking": "الحجز",
+    "cart": "سلة التسوق",
+    "account": "حسابي",
+    "admin": "الإدارة"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "register": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور"
+  },
+  "booking": {
+    "title": "الحجز",
+    "chooseDate": "اختر تاريخا",
+    "chooseTime": "اختر وقتا",
+    "yourName": "اسمك",
+    "yourEmail": "بريدك الإلكتروني",
+    "yourPhone": "هاتفك",
+    "notes": "ملاحظات",
+    "confirmation": "تأكيد الحجز",
+    "availableSlots": "المواعيد المتاحة",
+    "noAvailableSlots": "لا توجد مواعيد متاحة",
+    "bookNow": "احجز الآن"
+  },
+  "contact": {
+    "title": "اتصل بنا",
+    "subject": "الموضوع",
+    "message": "الرسالة",
+    "send": "إرسال",
+    "thankyou": "شكرا لرسالتك. سنتصل بك قريبا."
+  },
+  "shop": {
+    "products": "المنتجات",
+    "addToCart": "أضف إلى السلة",
+    "viewDetails": "عرض التفاصيل",
+    "price": "السعر",
+    "quantity": "الكمية",
+    "total": "المجموع",
+    "checkout": "إتمام الشراء",
+    "continueShopping": "مواصلة التسوق",
+    "emptyCart": "سلة التسوق فارغة"
+  },
+  "accessibility": {
+    "increaseTextSize": "زيادة حجم النص",
+    "decreaseTextSize": "تقليل حجم النص",
+    "resetTextSize": "إعادة ضبط حجم النص",
+    "highContrast": "تباين عالي",
+    "simplifiedMode": "وضع مبسط",
+    "reducedMotion": "حركة مخفضة",
+    "accessibilitySettings": "إعدادات إمكانية الوصول",
+    "screenReader": "تعليمات قارئ الشاشة",
+    "keyboardShortcuts": "اختصارات لوحة المفاتيح"
+  },
+  "dates": {
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "tomorrow": "غدا",
+    "dayNames": {
+      "monday": "الإثنين",
+      "tuesday": "الثلاثاء",
+      "wednesday": "الأربعاء",
+      "thursday": "الخميس",
+      "friday": "الجمعة",
+      "saturday": "السبت",
+      "sunday": "الأحد"
+    },
+    "monthNames": {
+      "january": "يناير",
+      "february": "فبراير",
+      "march": "مارس",
+      "april": "أبريل",
+      "may": "مايو",
+      "june": "يونيو",
+      "july": "يوليو",
+      "august": "أغسطس",
+      "september": "سبتمبر",
+      "october": "أكتوبر",
+      "november": "نوفمبر",
+      "december": "ديسمبر"
+    }
+  },
+  "errors": {
+    "notFound": "الصفحة غير موجودة",
+    "serverError": "خطأ في الخادم",
+    "networkError": "خطأ في الاتصال",
+    "validationError": "خطأ في التحقق",
+    "requiredField": "هذا الحقل مطلوب",
+    "invalidEmail": "بريد إلكتروني غير صالح",
+    "passwordTooShort": "كلمة المرور قصيرة جدا"
+  }
+}
